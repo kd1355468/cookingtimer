@@ -117,12 +117,18 @@ class _CookingTimerState extends State<CookingTimer> {
         child: ListView(
           children: [
             DrawerHeader(
-              child: Center(
-                child: Text("タイマー切り替え"),
+              child: Row(
+                children: [
+                  Icon(Icons.schedule),
+                  Center(
+                    child: Text("タイマー切り替え"),
+                  )
+                ],
+                
               )
             ),
 
-            ListTile(
+            ListTile (
               title: Text("カップ麵用タイマー"),
               subtitle: Text("他のインスタント食品にも使えます"),
               onTap: (){
@@ -133,7 +139,6 @@ class _CookingTimerState extends State<CookingTimer> {
                   resetTimer();
                   Navigator.pop(context);
                 });
-                
               },
             ),
 
@@ -166,12 +171,28 @@ class _CookingTimerState extends State<CookingTimer> {
           ],
         ),
       ),
+      
 
       //タイマーの中身
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            if(_timerMode=="Ramen")...{
+              Image.asset(
+                "assets/food_cup_noodle_close_transparent.png",
+                width: 100,
+                height: 100,
+              ),
+            }else if(_timerMode == "boilEgg")...{
+              Image.asset(
+                "assets/egg_white_transparent.png",
+                width: 100,
+                height: 100,
+              ),
+            },
+            
+
             Text(_formatTime(),style: TextStyle(fontSize: 36),),
             SizedBox(height: 16,),
             Row(
@@ -226,6 +247,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       setState(() {
                         _counter = 180;
                         _setCount = 180;
+                        stopTimer();
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -241,6 +263,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       setState(() {
                         _counter = 240;
                         _setCount = 240;
+                        stopTimer();
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -256,6 +279,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       setState(() {
                         _counter = 300;
                         _setCount = 300;
+                        stopTimer();
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -277,6 +301,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       setState(() {
                         _counter = 360;
                         _setCount = 360;
+                        stopTimer();
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -292,6 +317,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       setState(() {
                         _counter = 480;
                         _setCount = 480;
+                        stopTimer();
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -307,6 +333,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       setState(() {
                         _counter = 720;
                         _setCount = 720;
+                        stopTimer();
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -328,6 +355,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       setState(() {
                         _counter = 90;
                         _setCount = 90;
+                        stopTimer();
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -343,6 +371,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       setState(() {
                         _counter = 900;
                         _setCount = 900;
+                        stopTimer();
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -358,6 +387,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       setState(() {
                         _counter = 1500;
                         _setCount = 1500;
+                        stopTimer();
                       });
                     },
                     style: ElevatedButton.styleFrom(
