@@ -111,6 +111,7 @@ class _CookingTimerState extends State<CookingTimer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 223, 207, 207),
       appBar: AppBar(
         title: Text(_timerTitle),
         shape: Border(bottom: BorderSide(width: 1.0)),
@@ -175,6 +176,16 @@ class _CookingTimerState extends State<CookingTimer> {
                 });
               },
             ),
+
+            ListTile(
+              title: Text("閉じる"),
+              leading: Icon(Icons.close),
+              onTap: (){
+                setState(() {
+                  Navigator.pop(context);
+                });
+              },
+            ),
           ],
         ),
       ),
@@ -223,11 +234,19 @@ class _CookingTimerState extends State<CookingTimer> {
                     startTimer();
                   },
                   style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
+                    fixedSize: Size(100, 50),
+                    shape: RoundedRectangleBorder( 
                       borderRadius: BorderRadius.circular(0)
                     )
                   ),
-                  child: Text("スタート")
+
+                  child: Text(
+                    "スタート",
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.black,
+                    ),
+                  )
                 ),
                 SizedBox(width: 16,),
                 ElevatedButton(
@@ -235,11 +254,19 @@ class _CookingTimerState extends State<CookingTimer> {
                     stopTimer();
                   },
                   style: ElevatedButton.styleFrom(
+                    fixedSize: Size(100, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0)
                     )
                   ),
-                  child: Text("ストップ"),
+
+                  child: Text(
+                    "ストップ",
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
                 SizedBox(width: 16,),
                 ElevatedButton(
@@ -247,17 +274,25 @@ class _CookingTimerState extends State<CookingTimer> {
                     resetTimer();
                   },
                   style: ElevatedButton.styleFrom(
+                    fixedSize: Size(100, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0)
                     )
                   ),
-                  child: Text("リセット")
+
+                  child: Text(
+                    "リセット",
+                    style: TextStyle(
+                      fontSize: 17,
+                       color: Colors.black,
+                    ),
+                  )
                 ),
               ],
             ),
 
             //ボタン(時間設定)
-            SizedBox(height: 16,),
+            SizedBox(height: 20,),
             if(_timerMode == 'Ramen')...{
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -273,11 +308,17 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      )
+                      fixedSize: Size(100, 50),
+                      
                     ),
-                    child: Text("03:00")
+
+                    child: Text(
+                      "03:00",
+                      style: TextStyle(
+                        fontSize: 17,
+                         color: Colors.black,
+                      ),
+                    )
                   ),
                   SizedBox(width: 16,),
                   ElevatedButton(
@@ -290,11 +331,17 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      )
+                      fixedSize: Size(100, 50),
+                     
                     ),
-                    child: Text("04:00")
+
+                    child: Text(
+                      "04:00",
+                      style: TextStyle(
+                        fontSize: 17,
+                         color: Colors.black,
+                      ),
+                    )
                   ),
                   SizedBox(width: 16,),
                   ElevatedButton(
@@ -307,11 +354,17 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      )
+                      fixedSize: Size(100, 50),
+                      
                     ),
-                    child: Text("05:00")
+
+                    child: Text(
+                      "05:00",
+                      style: TextStyle(
+                        fontSize: 17,
+                         color: Colors.black,
+                      ),
+                    )
                   ),
                 ],
               ),
@@ -330,11 +383,16 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      )
+                      fixedSize: Size(100, 50),
                     ),
-                   child: Text("半生")
+
+                    child: Text(
+                      "半生",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                      ),
+                    )
                   ),
                   SizedBox(width: 16,),
                   ElevatedButton(
@@ -347,11 +405,16 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      )
+                      fixedSize: Size(100, 50),
                     ),
-                    child: Text("半熟")
+
+                    child: Text(
+                      "半熟",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                      ),
+                    )
                   ),
                   SizedBox(width: 16,),
                   ElevatedButton(
@@ -364,11 +427,16 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      )
+                      fixedSize: Size(100, 50),
                     ),
-                    child: Text("固ゆで")
+
+                    child: Text(
+                      "固ゆで",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                      ),
+                    )
                   ),
                 ],
               ),
@@ -386,11 +454,16 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      )
+                      fixedSize: Size(100, 50),
                     ),
-                   child: Text("葉野菜")
+
+                    child: Text(
+                      "葉野菜",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                      ),
+                    )
                   ),
                   SizedBox(width: 16,),
                   ElevatedButton(
@@ -402,11 +475,16 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      )
+                      fixedSize: Size(100, 50),
                     ),
-                    child: Text("根菜類")
+
+                    child: Text(
+                      "根菜類",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                      ),
+                    )
                   ),
                   SizedBox(width: 16,),
                   ElevatedButton(
@@ -418,11 +496,16 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      )
+                      fixedSize: Size(100, 50),
                     ),
-                    child: Text("イモ類")
+
+                    child: Text(
+                      "イモ類",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                      ),
+                    )
                   ),
                 ],
               ),
