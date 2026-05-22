@@ -198,14 +198,19 @@ class _CookingTimerState extends State<CookingTimer> {
                 width: 100,
                 height: 100,
               ),
-            }else if(_timerMode == "boilEgg")...{
+            }else if(_timerMode == "boilEgg" && _comp == false)...{
               Image.asset(
                 "assets/egg_white_transparent.png",
                 width: 100,
                 height: 100,
               ),
+            }else if(_timerMode == "boilEgg" && _comp == true)...{
+              Image.asset(
+                "assets/food_yudetamago_gizagiza_transparent.png",
+                width: 100,
+                height: 100,
+              ),
             },
-            
             
             //ボタン(動作)
             Text(_formatTime(),style: TextStyle(fontSize: 36),),
@@ -318,6 +323,7 @@ class _CookingTimerState extends State<CookingTimer> {
                   ElevatedButton(
                     onPressed: (){
                       setState(() {
+                        _comp=false;
                         _counter = 360;
                         _setCount = 360;
                         stopTimer();
@@ -334,6 +340,7 @@ class _CookingTimerState extends State<CookingTimer> {
                   ElevatedButton(
                     onPressed: (){
                       setState(() {
+                        _comp=false;
                         _counter = 480;
                         _setCount = 480;
                         stopTimer();
@@ -350,6 +357,7 @@ class _CookingTimerState extends State<CookingTimer> {
                   ElevatedButton(
                     onPressed: (){
                       setState(() {
+                        _comp=false;
                         _counter = 720;
                         _setCount = 720;
                         stopTimer();
