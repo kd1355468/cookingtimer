@@ -39,6 +39,8 @@ class _CookingTimerState extends State<CookingTimer> {
   //タイマーの名前変更
   String _timerTitle = "カップ麵タイマー";
 
+  bool _comp=false;
+
   Timer? _timer;
 
   //初期化
@@ -73,6 +75,7 @@ class _CookingTimerState extends State<CookingTimer> {
             _counter--;
           });
         }else{
+          _comp = true;
           stopTimer();
         }
       }
@@ -93,6 +96,7 @@ class _CookingTimerState extends State<CookingTimer> {
     stopTimer();
 
     setState(() {
+      _comp=false;
       _counter = _setCount;
     });
   }
@@ -133,6 +137,7 @@ class _CookingTimerState extends State<CookingTimer> {
               subtitle: Text("他のインスタント食品にも使えます"),
               onTap: (){
                 setState(() {
+                  _comp=false;
                   _timerMode = "Ramen";
                   _timerTitle = "カップ麵タイマー";
                   _setCount = 180;
@@ -147,6 +152,7 @@ class _CookingTimerState extends State<CookingTimer> {
               subtitle: Text("沸騰したお湯から茹でた場合の時間"),
               onTap: (){
                 setState(() {
+                  _comp=false;
                   _timerMode = "boilEgg";     
                   _timerTitle = "ゆで卵タイマー";
                    _setCount = 360;
@@ -160,6 +166,7 @@ class _CookingTimerState extends State<CookingTimer> {
               title: Text("茹で野菜用タイマー"),
               onTap: (){
                 setState(() {
+                  _comp=false;
                   _timerMode = "boilvegetable"; 
                   _timerTitle = "茹で野菜タイマー";
                   _setCount = 90;
@@ -178,9 +185,16 @@ class _CookingTimerState extends State<CookingTimer> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if(_timerMode=="Ramen")...{
+            //画像
+            if(_timerMode=="Ramen" && _comp == false)...{
               Image.asset(
                 "assets/food_cup_noodle_close_transparent.png",
+                width: 100,
+                height: 100,
+              ),
+            }else if(_timerMode == "Ramen" && _comp == true)...{
+              Image.asset(
+                "assets/food_cup_noodle_open_transparent.png",
                 width: 100,
                 height: 100,
               ),
@@ -192,7 +206,8 @@ class _CookingTimerState extends State<CookingTimer> {
               ),
             },
             
-
+            
+            //ボタン(動作)
             Text(_formatTime(),style: TextStyle(fontSize: 36),),
             SizedBox(height: 16,),
             Row(
@@ -236,6 +251,7 @@ class _CookingTimerState extends State<CookingTimer> {
               ],
             ),
 
+            //ボタン(時間設定)
             SizedBox(height: 16,),
             if(_timerMode == 'Ramen')...{
               Row(
@@ -245,6 +261,7 @@ class _CookingTimerState extends State<CookingTimer> {
                   ElevatedButton(
                     onPressed: (){
                       setState(() {
+                        _comp=false;
                         _counter = 180;
                         _setCount = 180;
                         stopTimer();
@@ -261,6 +278,7 @@ class _CookingTimerState extends State<CookingTimer> {
                   ElevatedButton(
                     onPressed: (){
                       setState(() {
+                        _comp=false;
                         _counter = 240;
                         _setCount = 240;
                         stopTimer();
@@ -277,6 +295,7 @@ class _CookingTimerState extends State<CookingTimer> {
                   ElevatedButton(
                     onPressed: (){
                       setState(() {
+                        _comp=false;
                         _counter = 300;
                         _setCount = 300;
                         stopTimer();
@@ -399,7 +418,27 @@ class _CookingTimerState extends State<CookingTimer> {
                   ),
                 ],
               ),
-            }
+            },
+            
+            SizedBox(height: 16,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: (){
+                    setState(() {
+                      _counter = 1;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0)
+                    )
+                  ),
+                  child: Text("デバッグ用")
+                ),
+              ]
+            )
           ],
         ),
       ),
