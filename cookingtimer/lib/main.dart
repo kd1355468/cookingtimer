@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+//import 'package:flutter/scheduler.dart';
 
 void main() {
   runApp(const Base());
@@ -47,10 +47,7 @@ class _CookingTimerState extends State<CookingTimer> {
   @override
   void initState(){
     super.initState();
-
     _counter = 180;
-
-
   }
 
   String _formatTime(){
@@ -111,7 +108,7 @@ class _CookingTimerState extends State<CookingTimer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 223, 207, 207),
+      backgroundColor: const Color.fromARGB(255, 161, 168, 240),
       appBar: AppBar(
         title: Text(_timerTitle),
         shape: Border(bottom: BorderSide(width: 1.0)),
@@ -119,6 +116,7 @@ class _CookingTimerState extends State<CookingTimer> {
 
       //サイドメニュー
       drawer: Drawer(
+        backgroundColor: const Color.fromARGB(255, 161, 168, 240),
         child: ListView(
           children: [
             DrawerHeader(
@@ -126,7 +124,13 @@ class _CookingTimerState extends State<CookingTimer> {
                 children: [
                   Icon(Icons.schedule),
                   Center(
-                    child: Text("タイマー切り替え"),
+                    child: Text(
+                      "タイマー切り替え",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: const Color.fromARGB(255, 230, 227, 227),
+                      ),
+                    ),
                   )
                 ],
                 
@@ -134,8 +138,8 @@ class _CookingTimerState extends State<CookingTimer> {
             ),
 
             ListTile (
-              title: Text("カップ麵用タイマー"),
-              subtitle: Text("他のインスタント食品にも使えます"),
+              title: Text("カップ麵用タイマー",style: TextStyle(fontSize: 18, color: const Color.fromARGB(255, 230, 227, 227),),),
+              subtitle: Text("他のインスタント食品にも使えます",style: TextStyle( color: const Color.fromARGB(255, 230, 227, 227),),),
               onTap: (){
                 setState(() {
                   _comp=false;
@@ -149,8 +153,8 @@ class _CookingTimerState extends State<CookingTimer> {
             ),
 
             ListTile(
-              title: Text("ゆで卵用タイマー"),
-              subtitle: Text("沸騰したお湯から茹でた場合の時間"),
+              title: Text("ゆで卵用タイマー",style: TextStyle(fontSize: 18, color: const Color.fromARGB(255, 230, 227, 227),),),
+              subtitle: Text("沸騰したお湯から茹でた場合の時間",style: TextStyle( color: const Color.fromARGB(255, 230, 227, 227),),),
               onTap: (){
                 setState(() {
                   _comp=false;
@@ -164,7 +168,7 @@ class _CookingTimerState extends State<CookingTimer> {
             ),
 
             ListTile(
-              title: Text("茹で野菜用タイマー"),
+              title: Text("茹で野菜用タイマー",style: TextStyle(fontSize: 18, color: const Color.fromARGB(255, 230, 227, 227),),),
               onTap: (){
                 setState(() {
                   _comp=false;
@@ -177,8 +181,9 @@ class _CookingTimerState extends State<CookingTimer> {
               },
             ),
 
+            SizedBox(height: 16,),
             ListTile(
-              title: Text("閉じる"),
+              title: Text("閉じる",style: TextStyle(fontSize: 16, color: const Color.fromARGB(255, 230, 227, 227),),),
               leading: Icon(Icons.close),
               onTap: (){
                 setState(() {
@@ -207,7 +212,7 @@ class _CookingTimerState extends State<CookingTimer> {
               Image.asset(
                 "assets/food_cup_noodle_open_transparent.png",
                 width: 100,
-                height: 100,
+                height: 120,
               ),
             }else if(_timerMode == "boilEgg" && _comp == false)...{
               Image.asset(
@@ -224,7 +229,7 @@ class _CookingTimerState extends State<CookingTimer> {
             },
             
             //ボタン(動作)
-            Text(_formatTime(),style: TextStyle(fontSize: 36),),
+            Text(_formatTime(),style: TextStyle(fontSize: 42, color: Colors.white),),
             SizedBox(height: 16,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -234,6 +239,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     startTimer();
                   },
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
                     fixedSize: Size(100, 50),
                     shape: RoundedRectangleBorder( 
                       borderRadius: BorderRadius.circular(0)
@@ -254,6 +260,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     stopTimer();
                   },
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
                     fixedSize: Size(100, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0)
@@ -274,6 +281,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     resetTimer();
                   },
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
                     fixedSize: Size(100, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0)
@@ -308,15 +316,15 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      fixedSize: Size(100, 50),
-                      
+                      backgroundColor: Colors.white,
+                      fixedSize: Size(100, 50),                      
                     ),
 
                     child: Text(
                       "03:00",
                       style: TextStyle(
                         fontSize: 17,
-                         color: Colors.black,
+                        color: Colors.black,
                       ),
                     )
                   ),
@@ -331,15 +339,15 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 50),
-                     
                     ),
 
                     child: Text(
                       "04:00",
                       style: TextStyle(
                         fontSize: 17,
-                         color: Colors.black,
+                        color: Colors.black,
                       ),
                     )
                   ),
@@ -354,15 +362,15 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 50),
-                      
                     ),
 
                     child: Text(
                       "05:00",
                       style: TextStyle(
                         fontSize: 17,
-                         color: Colors.black,
+                        color: Colors.black,
                       ),
                     )
                   ),
@@ -383,6 +391,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -405,6 +414,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -427,6 +437,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -454,6 +465,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -475,6 +487,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -496,6 +509,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
                       fixedSize: Size(100, 50),
                     ),
 
