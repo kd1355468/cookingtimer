@@ -110,13 +110,14 @@ class _CookingTimerState extends State<CookingTimer> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 161, 168, 240),
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(_timerTitle),
         shape: Border(bottom: BorderSide(width: 1.0)),
       ),
 
       //サイドメニュー
       drawer: Drawer(
-        backgroundColor: const Color.fromARGB(255, 161, 168, 240),
+        backgroundColor: Colors.white,
         child: ListView(
           children: [
             DrawerHeader(
@@ -128,7 +129,7 @@ class _CookingTimerState extends State<CookingTimer> {
                       "タイマー切り替え",
                       style: TextStyle(
                         fontSize: 20,
-                        color: const Color.fromARGB(255, 230, 227, 227),
+                        color: Colors.black,
                       ),
                     ),
                   )
@@ -138,8 +139,9 @@ class _CookingTimerState extends State<CookingTimer> {
             ),
 
             ListTile (
-              title: Text("カップ麵用タイマー",style: TextStyle(fontSize: 18, color: const Color.fromARGB(255, 230, 227, 227),),),
-              subtitle: Text("他のインスタント食品にも使えます",style: TextStyle( color: const Color.fromARGB(255, 230, 227, 227),),),
+              title: Text("カップ麵用タイマー",style: TextStyle(fontSize: 18, color: Colors.black,),),
+              subtitle: Text("他のインスタント食品にも使えます",style: TextStyle( color: Colors.black,),),
+              hoverColor: Colors.grey,
               onTap: (){
                 setState(() {
                   _comp=false;
@@ -153,8 +155,9 @@ class _CookingTimerState extends State<CookingTimer> {
             ),
 
             ListTile(
-              title: Text("ゆで卵用タイマー",style: TextStyle(fontSize: 18, color: const Color.fromARGB(255, 230, 227, 227),),),
-              subtitle: Text("沸騰したお湯から茹でた場合の時間",style: TextStyle( color: const Color.fromARGB(255, 230, 227, 227),),),
+              title: Text("ゆで卵用タイマー",style: TextStyle(fontSize: 18, color: Colors.black,),),
+              subtitle: Text("沸騰したお湯から茹でた場合の時間",style: TextStyle( color: Colors.black,),),
+              hoverColor: Colors.grey,
               onTap: (){
                 setState(() {
                   _comp=false;
@@ -168,7 +171,8 @@ class _CookingTimerState extends State<CookingTimer> {
             ),
 
             ListTile(
-              title: Text("茹で野菜用タイマー",style: TextStyle(fontSize: 18, color: const Color.fromARGB(255, 230, 227, 227),),),
+              title: Text("茹で野菜用タイマー",style: TextStyle(fontSize: 18, color: Colors.black,),),
+              hoverColor: Colors.grey,
               onTap: (){
                 setState(() {
                   _comp=false;
@@ -183,7 +187,8 @@ class _CookingTimerState extends State<CookingTimer> {
 
             SizedBox(height: 16,),
             ListTile(
-              title: Text("閉じる",style: TextStyle(fontSize: 16, color: const Color.fromARGB(255, 230, 227, 227),),),
+              title: Text("閉じる",style: TextStyle(fontSize: 16, color: Colors.black,),),
+              hoverColor: Colors.grey,
               leading: Icon(Icons.close),
               onTap: (){
                 setState(() {
@@ -228,8 +233,25 @@ class _CookingTimerState extends State<CookingTimer> {
               ),
             },
             
+            //タイマー(時間表示)
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: 120,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: Colors.white,
+                  ),
+                  
+                ),
+
+                Text(_formatTime(),style: TextStyle(fontSize: 42, color: Colors.black),),
+              ],
+            ),
+
             //ボタン(動作)
-            Text(_formatTime(),style: TextStyle(fontSize: 42, color: Colors.white),),
             SizedBox(height: 16,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -240,9 +262,10 @@ class _CookingTimerState extends State<CookingTimer> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
+                    overlayColor: Colors.black,
                     fixedSize: Size(100, 50),
                     shape: RoundedRectangleBorder( 
-                      borderRadius: BorderRadius.circular(0)
+                      borderRadius: BorderRadius.circular(10)
                     )
                   ),
 
@@ -261,9 +284,10 @@ class _CookingTimerState extends State<CookingTimer> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
+                    overlayColor: Colors.black,
                     fixedSize: Size(100, 50),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0)
+                      borderRadius: BorderRadius.circular(10)
                     )
                   ),
 
@@ -282,9 +306,10 @@ class _CookingTimerState extends State<CookingTimer> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
+                    overlayColor: Colors.black,
                     fixedSize: Size(100, 50),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0)
+                      borderRadius: BorderRadius.circular(10)
                     )
                   ),
 
@@ -317,6 +342,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
+                      overlayColor: Colors.black,
                       fixedSize: Size(100, 50),                      
                     ),
 
@@ -340,6 +366,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
+                      overlayColor: Colors.black,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -363,6 +390,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
+                      overlayColor: Colors.black,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -392,6 +420,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
+                      overlayColor: Colors.black,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -415,6 +444,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
+                      overlayColor: Colors.black,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -438,6 +468,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
+                      overlayColor: Colors.black,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -466,6 +497,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
+                      overlayColor: Colors.black,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -488,6 +520,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
+                      overlayColor: Colors.black,
                       fixedSize: Size(100, 50),
                     ),
 
@@ -510,6 +543,7 @@ class _CookingTimerState extends State<CookingTimer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
+                      overlayColor: Colors.black,
                       fixedSize: Size(100, 50),
                     ),
 
